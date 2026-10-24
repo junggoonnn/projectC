@@ -10,10 +10,13 @@ CHỨC NĂNG CHÍNH:
 - Các chức năng khác theo phạm vi triển khai của dự án.
 
 CÔNG NGHỆ SỬ DỤNG:
+
 Ngôn ngữ lập trình: C
+
 Công cụ phát triển: Dev-C++
 
 THÀNH VIÊN NHÓM:
+
 Chủ quán: Đinh Gia Phú
 - Phạm Kim Phụng
 - Nguyễn Hữu Minh
