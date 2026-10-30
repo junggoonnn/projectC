@@ -97,18 +97,62 @@ void hienThiMenu() {
 // ----- Phan 2 huu minh (khai bao prototype) -----
 void timKiemSinhVien() {
 	char ma[15];
-	printf("Nhap MSSV:");
-	docChuoi(ma, sizeof(ma));
-	for (int i = 0; i < n; i++) {
-		if (strcmp(dsSV[i].maSV, ma) == 0) {
-			printf("%-10s%-25s%-10s%-8s%s\n", "Ma SV", "Ho ten", "Lop", "DiemTB", "Xep loai");
-			printf("%-10s%-25s%-10s%-8s%s\n", dsSV[i].maSV, dsSV[i].hoTen, dsSV[i].lop, dsSV[i].diemTB, dsSV[i].xepLoai);
-			return;
+	char ten[20];
+	int LuaChon = 0;
+	do {
+		printf("\n=====TIM KIEM SINH VIEN=====\n");
+		printf("\nChon cach tim kiem sinh vien\n");
+		printf("1. Tim kiem theo ma so sinh vien\n");
+		printf("2. Tim kiem theo ho ten\n");
+		printf("0. Thoat\n");
+		printf("Nhap lua chon: ");
+		scanf("%d", &LuaChon);
+		xoaBoDem();
+		switch (LuaChon) {
+			case 1:	{
+				int dem = 0;             
+				printf("Nhap MSSV: ");
+				docChuoi(ma, sizeof(ma));
+				for (int i = 0; i < n; i++) {
+					if (strcmp(dsSV[i].maSV, ma) == 0) {
+						if (dem == 0) {
+						printf("%-10s%-25s%-10s%-8s%s\n", "Ma SV", "Ho ten", "Lop", "DiemTB", "Xep loai");
+						printf("%-10s%-25s%-10s%-8s%s\n", dsSV[i].maSV, dsSV[i].hoTen, dsSV[i].lop, dsSV[i].diemTB, dsSV[i].xepLoai);
+						dem++;
+					}
+				}
+			}
+			if (dem == 0) {
+				printf("\nKhong tim thay sinh vien\n");
+			}
+				break;
 		}
-	}
-	printf("Khong tim thay sinh vien");	
-}	 
-
+			case 2: {
+				int dem = 0;
+				printf("Nhap ho ten: ");
+				docChuoi(ten, sizeof(ten));
+				for (int i = 0; i < n; i++) {
+					if (strcmp(dsSV[i].hoTen, ten) == 0) {
+						if (dem == 0) {
+						printf("%-10s%-25s%-10s%-8s%s\n", "Ma SV", "Ho ten", "Lop", "DiemTB", "Xep loai");
+						printf("%-10s%-25s%-10s%-8s%s\n", dsSV[i].maSV, dsSV[i].hoTen, dsSV[i].lop, dsSV[i].diemTB, dsSV[i].xepLoai);
+						dem++;
+					}
+				}
+			}
+				if (dem == 0) {
+					printf("\nKhong tim thay sinh vien\n");
+				}
+				break;
+		}
+			case 0:
+				printf("\nDa thoat chuc nang\n");
+				break;
+				return;
+		}
+	}	while (LuaChon != 0);     
+	return;
+}
 void suaSinhVien()     {
 	char ma[15];
 	printf("Nhap MSSV:");
@@ -146,6 +190,7 @@ void suaSinhVien()     {
 						printf("\nNhap lop moi: ");
 						docChuoi(dsSV[i].lop, sizeof(dsSV[i].lop));
 						printf("\nDa sua ho ten va lop thanh cong!");
+						break;
 					case 0:
 						printf("\nDa thoat chuc nang");
 						break;	
